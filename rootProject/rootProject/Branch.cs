@@ -9,7 +9,7 @@ namespace rootProject
     public abstract class Branch
     {
         private string _color = "Зелёный";
-        public abstract string ShowDisplayName();
+        public abstract string BranchName { get; set; }
 
         public virtual string Color 
         {
@@ -22,6 +22,8 @@ namespace rootProject
                 _color = value;
             } 
         }
+
+        public abstract string ShowDisplayName();
 
     }
 }

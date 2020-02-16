@@ -8,12 +8,25 @@ namespace rootProject
 {
     public class BranchRight : Branch
     {
-        private string branchName = "Правая ветка";
+        private string _branchName = "Правая ветка";
 
         private string _color = "Жёлтый";
+
+        public override string BranchName
+        {
+            get
+            {
+                return _branchName;
+            }
+            set
+            {
+                _branchName = value;
+            }
+        }
+
         public override string ShowDisplayName()
         {
-            return branchName;
+            return _branchName;
         }
 
         public override string Color 
