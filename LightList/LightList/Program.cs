@@ -6,6 +6,7 @@ namespace LightList
     {
         static void Main(string[] args)
         {
+            //задание 2: List произвольной длинны
             LightList<Item> myLightList = new LightList<Item>(20);
             myLightList.Add(new Item() { Id = 1 });
             myLightList.Add(new Item() { Id = 2 });
@@ -35,10 +36,30 @@ namespace LightList
                 Console.WriteLine("The resulting lenghts in {0} are as expected!", nameof(myLightList));
             }
 
+
+
+            //задание 1: List = 100
             LightList<Item> myLightList1 = new LightList<Item>();
             if (myLightList1.Count() == 0 && myLightList1.CountArrayLenght() == 100)
             {
                 Console.WriteLine("The resulting lenghts in {0} are as expected!", nameof(myLightList1));
+            }
+
+            //задание 3: структуру можно было использовать в операторе foreach
+            LightList<Item> myLightList2 = new LightList<Item>(10);
+            int iterator = 1;
+            foreach (Item item in myLightList2)            
+            {
+                myLightList2.Add(new Item() { Id = iterator });                
+                iterator += 2;
+            }
+
+            int iterator1 = 0;
+            foreach (Item item in myLightList2)
+            {
+                Item itemId = myLightList2.GetObjectByIndex(iterator1);
+                Console.WriteLine("Id of Item{0} = {1}", iterator1 + 1, itemId.Id);
+                iterator1++;
             }
         }
     }

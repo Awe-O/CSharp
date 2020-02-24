@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Collections;
 
 namespace LightList
 {
-    public class LightList<TObject> : ILightList<TObject>
+    public class LightList<TObject> : ILightList<TObject>, IEnumerable
         where TObject : class
     {
-        private static int _numberOfItems = 100;
-        private TObject[] _listOfObjects { get; set; } = new TObject[_numberOfItems];
+        private TObject[] _listOfObjects = new TObject[100];
         public int Index { get; set; } = 0;
 
         public LightList()
@@ -46,17 +45,22 @@ namespace LightList
             return _listOfObjects.Length;
         }
 
-        private int IndexOf(TObject[] _listOfObjects, TObject item)
+        private int _IndexOf(TObject[] _listOfObjects, TObject item)
         {
             int getIndex = Array.IndexOf(_listOfObjects, item);
             return getIndex;
+        }
+
+        public TObject GetObjectByIndex (int indexOfItem)
+        {
+            return (TObject)_listOfObjects.GetValue(indexOfItem);
         }
 
         public void Remove(TObject item)
         {            
             if (_listOfObjects.Length > 0)
             {
-                int getIndex = IndexOf(_listOfObjects, item);
+                int getIndex = _IndexOf(_listOfObjects, item);
 
                 if (_listOfObjects[getIndex + 1] == null)
                 {
@@ -77,5 +81,14 @@ namespace LightList
             Console.WriteLine("Add items to list before delet it.");
         }
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public LigthListEnum<TObject> GetEnumerator()
+        {
+            return new LigthListEnum<TObject> (_listOfObjects);
+        }
     }
 }
