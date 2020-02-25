@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LightList
+namespace LightListProject
 {
-    public interface ILightList <TObject>
+    public interface ILightList<TObject> : IEnumerable<TObject>
         where TObject: class
     {
         int Index { get; set; }

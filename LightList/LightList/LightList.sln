@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightList", "LightList.csproj", "{B949E426-F7AA-469D-BABB-A2F29541973D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LightListProject", "LightListProject.csproj", "{B949E426-F7AA-469D-BABB-A2F29541973D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

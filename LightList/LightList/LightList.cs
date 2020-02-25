@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Collections;
 
-namespace LightList
+namespace LightListProject
 {
-    public class LightList<TObject> : ILightList<TObject>, IEnumerable
+    public class LightList<TObject> : ILightList<TObject>
         where TObject : class
     {
         private TObject[] _listOfObjects = new TObject[100];
@@ -18,6 +18,11 @@ namespace LightList
         public LightList(int itemsInList)
         {
             _listOfObjects = new TObject[itemsInList];
+        }
+
+        public LightList(List<TObject> list)
+        {
+
         }
 
         public void Add(TObject itemToAdd)
@@ -83,12 +88,20 @@ namespace LightList
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            return this.GetEnumerator();
         }
 
-        public LigthListEnum<TObject> GetEnumerator()
+        public IEnumerator<TObject> GetEnumerator()
         {
-            return new LigthListEnum<TObject> (_listOfObjects);
+            foreach (TObject obj in _listOfObjects)
+            {                
+                yield return obj;
+            }
         }
+
+
+
+
+
     }
 }

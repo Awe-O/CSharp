@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LightList
+namespace LightListProject
 {
     public class Item
     {
