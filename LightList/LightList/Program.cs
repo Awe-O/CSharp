@@ -44,7 +44,7 @@ namespace LightListProject
             myLightList.Remove(itemToRemove);
             myLightList.Remove(itemToRemove2);
             if (myLightList.Count() == 4)
-                Console.WriteLine("Items in list (1 item added and 2 items removed): {0}", myLightList.Count());
+                Console.WriteLine("Items in list (3 item added and 2 items removed): {0}", myLightList.Count());
 
             myLightList.Add(new Item() { Id = 99 });
 
