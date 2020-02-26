@@ -1,32 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections;
+using LightListProject.Common;
+using LightListProject.Common.Log;
 
-namespace LightListProject
+namespace LightListProject.Items
 {
     public class LightList<TObject> : ILightList<TObject>
         where TObject : class
     {
         private TObject[] _listOfObjects = new TObject[100];
+        private ILogger _logger;
         public int Index { get; set; } = 0;
 
-        public LightList()
+        public LightList(ILogger logger)
         {
-
+            _logger = logger;
         }
 
-        public LightList(int itemsInList)
+        public LightList(int itemsInList, 
+            ILogger logger)
         {
             _listOfObjects = new TObject[itemsInList];
+            _logger = logger;
         }
 
-        public LightList(List<TObject> list)
+        public LightList(List<TObject> list,
+            ILogger logger)
         {
+            int lenghOfArray = list.Count;
+            _listOfObjects = new TObject[lenghOfArray];
+            _logger = logger;
 
+            while (lenghOfArray > 0)
+            {
+                _logger.Info("Item added to the LightList.");
+                _listOfObjects[lenghOfArray - 1] = list[lenghOfArray - 1];
+                lenghOfArray--;
+            }
         }
 
         public void Add(TObject itemToAdd)
         {
+            _logger.Info("Item added to the LightList.");
             _listOfObjects[Index] = itemToAdd;
             Index++;
             return;
@@ -62,7 +78,8 @@ namespace LightListProject
         }
 
         public void Remove(TObject item)
-        {            
+        {
+            _logger.Info("Item removed from the LightList.");
             if (_listOfObjects.Length > 0)
             {
                 int getIndex = _IndexOf(_listOfObjects, item);

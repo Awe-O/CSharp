@@ -9,4 +9,8 @@
     <Compile Remove="LigthListEnum.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NLog" Version="4.6.8" />
+  </ItemGroup>
+
 </Project>

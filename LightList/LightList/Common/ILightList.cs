@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LightListProject
+namespace LightListProject.Common
 {
     public interface ILightList<TObject> : IEnumerable<TObject>
         where TObject: class

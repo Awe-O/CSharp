@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using LightListProject.Common.Log;
+using LightListProject.Items;
 
 namespace LightListProject
 {
@@ -7,9 +9,12 @@ namespace LightListProject
     {
         static void Main(string[] args)
         {
+            //задание 5: добавить логирование
+            ILogger logger = new NlogLogger();
+
             //задание 1: List = 100
             Console.WriteLine("Задание 1: List = 100");
-            LightList<Item> myLightList1 = new LightList<Item>();
+            LightList<Item> myLightList1 = new LightList<Item>(logger);
             if (myLightList1.Count() == 0 && myLightList1.CountArrayLenght() == 100)
             {
                 Console.WriteLine("The resulting lenghts in {0} are as expected!", nameof(myLightList1));
@@ -19,7 +24,7 @@ namespace LightListProject
             //задание 2: List произвольной длинны
             Console.WriteLine("\r\nЗадание 2: List произвольной длинны");
 
-            LightList <Item> myLightList = new LightList<Item>(20);
+            LightList <Item> myLightList = new LightList<Item>(20, logger);
             myLightList.Add(new Item() { Id = 1 });
             myLightList.Add(new Item() { Id = 2 });
             myLightList.Add(new Item() { Id = 3 });
@@ -51,7 +56,7 @@ namespace LightListProject
 
             //задание 3: структуру можно использовать в операторе foreach
             Console.WriteLine("\r\nЗадание 3: структуру можно использовать в операторе foreach");
-            LightList<Item> myLightList2 = new LightList<Item>(10);
+            LightList<Item> myLightList2 = new LightList<Item>(10, logger);
             int iterator = 1;
             foreach (Item item in myLightList2)            
             {
@@ -68,11 +73,19 @@ namespace LightListProject
             }
 
 
-            //задание 4: структуру можно передовать в конструктор List<> и в него можно было передавать в конструктор List<>
-            Console.WriteLine("\r\nЗадание 4: структуру можно передовать в " +
-                "конструктор List<> и в него можно было передавать в конструктор List<>");
-            LightList<Item> myLightList3 = new LightList<Item>(new List<Item>());
-            List<Item> myLightList4 = new List<Item>(myLightList3);
+            //задание 4: структуру можно передовать в конструктор List<> и в него можно передавать конструктор List<>
+            Console.WriteLine("\r\nЗадание 4: структуру можно передавать в " +
+                "конструктор List<> и в него можно передавать конструктор List<>");
+            List<Item> myLightList3 = new List<Item>();
+            myLightList3.Add(new Item() { Id = 999 });
+            myLightList3.Add(new Item() { Id = 888 });
+            myLightList3.Add(new Item() { Id = 777 });
+
+            LightList<Item> myLightList4 = new LightList<Item>(myLightList3, logger);
+            
+            List<Item> myLightList5 = new List<Item>(myLightList4);
+            if (myLightList5.Count == 3)
+                Console.WriteLine("Items in list: {0}", myLightList5.Count);
         }
     }
 }
