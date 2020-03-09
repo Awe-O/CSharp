@@ -9,33 +9,32 @@ namespace LightListProject.Items
     public class LightList<TObject> : ILightList<TObject>
         where TObject : class
     {
-        private TObject[] _listOfObjects = new TObject[100];
+        private TObject[] _listOfObjects;
         private ILogger _logger;
         public int Index { get; set; } = 0;
 
         public LightList(ILogger logger)
         {
             _logger = logger;
+            _listOfObjects = new TObject[100];
         }
 
-        public LightList(int itemsInList, 
-            ILogger logger)
+        public LightList(int lenghOfArray, 
+            ILogger logger) : this(logger)
         {
-            _listOfObjects = new TObject[itemsInList];
-            _logger = logger;
+            _listOfObjects = new TObject[lenghOfArray];
         }
 
         public LightList(List<TObject> list,
-            ILogger logger)
+            ILogger logger) : this (logger)
         {
             int lenghOfArray = list.Count;
             _listOfObjects = new TObject[lenghOfArray];
-            _logger = logger;
 
             while (lenghOfArray > 0)
             {
                 _logger.Info("Item added to the LightList.");
-                _listOfObjects[lenghOfArray - 1] = list[lenghOfArray - 1];
+                Add(list[lenghOfArray - 1]);
                 lenghOfArray--;
             }
         }
@@ -74,7 +73,7 @@ namespace LightListProject.Items
 
         public TObject GetObjectByIndex (int indexOfItem)
         {
-            return (TObject)_listOfObjects.GetValue(indexOfItem);
+            return _listOfObjects[indexOfItem];
         }
 
         public void Remove(TObject item)
