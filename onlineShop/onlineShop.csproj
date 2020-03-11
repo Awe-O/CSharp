@@ -43,12 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Items.cs" />
+    <Compile Include="Catalogue\Manufacturers.cs" />
+    <Compile Include="Common\IItems.cs" />
+    <Compile Include="Common\IPrices.cs" />
+    <Compile Include="Helpers\Generators.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\Laptop.cs" />
+    <Compile Include="Items\Monitor.cs" />
+    <Compile Include="Items\TV.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
