@@ -9,6 +9,8 @@ namespace GeologicalTreeProject
         {
             // Задача: 
             // 1. Реализовать генеалогическое дерево, так чтобы родители знали о детях, а дети о родителях.
+            // 2. Найти человека с фамилией "Пупкин".
+
 
             Person<Ancestor> ancestors = new Person<Ancestor>() { FirstName = "Dmitry", LastName = "Petrov" };
             ancestors.Right = new Relatives<Ancestor>(new Ancestor()) { FirstName = "Ivan", LastName = "Petrov", Parent = ancestors };
@@ -23,6 +25,8 @@ namespace GeologicalTreeProject
             ancestors.Left.Right.Left = new Relatives<Ancestor>(new Ancestor()) { FirstName = "Yana", LastName = "Krilenko", Parent = ancestors.Left.Right };
             ancestors.Left.Right.Right = new Relatives<Ancestor>(new Ancestor()) { FirstName = "Petr", LastName = "Pupkin", Parent = ancestors.Left.Right };
             ancestors.Left.Left.Right = new Relatives<Ancestor>(new Ancestor()) { FirstName = "Ilya", LastName = "Koryakin", Parent = ancestors.Left.Left };
+
+            
         }
     }
 }

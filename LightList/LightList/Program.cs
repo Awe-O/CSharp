@@ -7,8 +7,17 @@ namespace LightListProject
 {
     class Program
     {
+        public class Sample1
+        {
+            static void F()
+            {
+                i = 1;
+            }
+            public static int i = 0;
+        }
         static void Main(string[] args)
         {
+            Console.Write(Sample1.F);
             //задание 5: добавить логирование
             ILogger logger = new NlogLogger();
 

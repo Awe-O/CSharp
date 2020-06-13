@@ -5,8 +5,7 @@ using System.Text;
 
 namespace GeologicalTreeProject.Persons
 {
-    class Person<TPerson> : Relatives<TPerson>
-            where TPerson : class
+    class Person<TPerson> : Relatives<Ancestor>
     {
 
     }

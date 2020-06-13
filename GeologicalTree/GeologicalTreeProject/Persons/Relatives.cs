@@ -1,18 +1,21 @@
 ﻿using GeologicalTreeProject.Common;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace GeologicalTreeProject.Persons
 {
-    class Relatives<TPerson> : Node<TPerson>
-        where TPerson: class
+    class Relatives<TPerson> : Ancestor, Node<TPerson>
+        where TPerson: Ancestor
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Node<TPerson> Left { get; set; }
         public Node<TPerson> Right { get; set; }
         public Node<TPerson> Parent { get; set; }
+
+        private IList<Node<TPerson>> _allRelatives { get; set; }
         public Relatives()
         {
 
@@ -40,6 +43,11 @@ namespace GeologicalTreeProject.Persons
             {
                 return Parent == null;
             }
+        }
+
+        public void addAllPersonToList (TPerson name)
+        {
+
         }
     }
 }
